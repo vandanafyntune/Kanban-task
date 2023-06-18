@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import Cards from "./Cards";
 
-function TodoCard({ key, type, length, data }) {
+function TodoCard({ key, type, length, data, color }) {
   const initialDnDState = {
     draggedFrom: null,
     draggedTo: null,
@@ -64,6 +64,7 @@ function TodoCard({ key, type, length, data }) {
     }
   };
 
+  const dynamicClassName = `my-2 h-2 bg-${color}`;
   const onDrop = (event) => {
     setList(dragAndDrop.updatedOrder);
 
@@ -102,7 +103,8 @@ function TodoCard({ key, type, length, data }) {
           <div className="flex justify-center items-center gap-3">
             <div
               className="rounded-md 
-             bg-[#5030E5] w-2 h-2 flex items-center justify-center"
+              w-2 h-2 flex items-center justify-center"
+              style={{ backgroundColor: color }}
             ></div>
             <div className="text-[#0D062D] font-semibold text-lg"> {type} </div>
 
@@ -114,11 +116,14 @@ function TodoCard({ key, type, length, data }) {
               {length}{" "}
             </div>
           </div>
-          <div className="text-[#5030E5]  text-xl font-extrabold bg-[#FDF3E7] rounded-md p-1">
-            <AiOutlinePlus />{" "}
-          </div>
+          {type === "To Do" && (
+            <div className="text-[#5030E5]  text-xl font-extrabold bg-[#FDF3E7] rounded-md p-1">
+              <AiOutlinePlus />{" "}
+            </div>
+          )}
         </div>
-        <hr className="my-2 bg-[#5030E5]  h-2" />
+        <hr className="my-2 h-2" style={{ backgroundColor: color }} />
+
         {list.map((item, index) => {
           return (
             <>

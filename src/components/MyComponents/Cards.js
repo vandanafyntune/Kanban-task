@@ -2,6 +2,8 @@ import React from "react";
 import man1 from "../../assets/man1.png";
 import man2 from "../../assets/man2.png";
 import man3 from "../../assets/man3.png";
+import message from "../../assets/message.png";
+import file from "../../assets/file.png";
 
 function Cards({ item, index, onDragStart, onDragOver, onDrop }) {
   return (
@@ -17,9 +19,14 @@ function Cards({ item, index, onDragStart, onDragOver, onDrop }) {
       >
         <div className="flex justify-between items-center">
           <p
-            className="text-xs text-[#D58D49] font-semibold bg-[#FDF3E7]
+            className="text-xs font-semibold 
              p-2 px-3
             rounded-md flex items-center justify-center"
+            style={{
+              color: item?.priority === "Completed" ? "#8bc48a" : "#D58D49",
+              backgroundColor:
+                item?.priority === "Completed" ? "#F0F9F0" : "#FDF3E7",
+            }}
           >
             {item?.priority}
           </p>
@@ -42,7 +49,14 @@ function Cards({ item, index, onDragStart, onDragOver, onDrop }) {
           <h2 className="text-lg font-semibold text-[#0D062D]">
             {item?.title}
           </h2>
-          <p className="text-xs text-[#787486] ">{item?.description}</p>
+          {item?.image ? (
+            <div className="flex gap-2">
+              <img className="" src={item?.image} alt="" />
+              <img className="" src={item?.image2} alt="" />
+            </div>
+          ) : (
+            <p className="text-xs text-[#787486] ">{item?.description}</p>
+          )}
         </div>
 
         <div className="flex justify-between items-center mt-4">
@@ -52,13 +66,17 @@ function Cards({ item, index, onDragStart, onDragOver, onDrop }) {
             <img className="w-8 h-8 rounded-full -ml-2" src={man3} alt="" />
           </div>
           <div className="flex gap-2 items-center">
-            <div>
+            <div className="flex justify-center items-center  text-xs text-[#787486] gap-1">
+              <img src={message} alt="" className="w-4 h-4" />
               <p className="text-[#787486] text-xs ">
                 {item?.comments} comments
               </p>
             </div>
             <div>
-              <p className="text-[#787486] text-xs ">{item?.files}files</p>
+              <p className="text-[#787486] text-xs flex justify-center items-center gap-1">
+                <img src={file} alt="" className="w-4 h-4" />
+                {item?.files}files
+              </p>
             </div>
           </div>
         </div>

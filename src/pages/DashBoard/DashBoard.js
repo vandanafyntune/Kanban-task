@@ -2,13 +2,18 @@ import React from "react";
 import Cards from "../../components/MyComponents/Cards";
 import TodoCard from "../../components/MyComponents/TodoCard";
 import SubHeader from "../../components/MyComponents/SubHeader";
+import mask from "../../assets/Mask Group.png";
+import unplash1 from "../../assets/unsplash1.png";
+import unplash2 from "../../assets/unsplash2.png";
+import unplash3 from "../../assets/unsplash3.png";
 
 function DashBoard() {
   const dataToda = [
     {
       id: 1,
-      type: "TO Do",
+      type: "To Do",
       length: 3,
+      color: "#5030E5",
       data: [
         {
           id: 1,
@@ -43,6 +48,7 @@ function DashBoard() {
       id: 2,
       type: "On Progress",
       length: 2,
+      color: "#FFA500",
       data: [
         {
           id: 22,
@@ -50,6 +56,7 @@ function DashBoard() {
           description:
             "Brainstorming brings team members' diverse experience into play",
           priority: "High",
+          image: mask,
           Comments: "2",
           file: "2",
         },
@@ -61,6 +68,8 @@ function DashBoard() {
           priority: "High",
           Comments: "2",
           file: "2",
+          image: unplash1,
+          image2: unplash2,
         },
       ],
     },
@@ -68,22 +77,24 @@ function DashBoard() {
       id: 3,
       type: "Done",
       length: 2,
+      color: "#8BC48A",
       data: [
         {
           id: 32,
           title: "Mobile App Design",
           description:
             "Brainstorming brings team members' diverse experience into play",
-          priority: "High",
+          priority: "Completed",
           Comments: "2",
           file: "2",
+          image: unplash3,
         },
         {
           id: 32,
           title: "Design System",
           description:
             "User research helps you to create an optimal product for users.",
-          priority: "High",
+          priority: "Completed",
           Comments: "2",
           file: "2",
         },
@@ -102,6 +113,7 @@ function DashBoard() {
             type={item.type}
             length={item.length}
             data={item.data}
+            color={item.color}
           />
         ))}
       </div>
